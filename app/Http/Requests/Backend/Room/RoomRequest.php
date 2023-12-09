@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Backend\Tour;
+namespace App\Http\Requests\Backend\Room;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Password;
 
-class PackageRibbonRequest extends FormRequest
+
+class RoomRequest extends FormRequest
 {
 
     /**
@@ -27,15 +26,16 @@ class PackageRibbonRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => 'required|string|max:191|unique:package_ribbons,title,'.$this->ribbon,
+            'title'                     => 'required|string|max:191',
+            'image_input'               => request()->method() == 'POST' ? 'required':'nullable'.'|image|mimes:jpeg,png,jpg',
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required'      => 'Please enter a title',
-            'title.unique'        => 'Title already in use',
+            'title.required'                => 'Please enter a title',
+            'image_input.required'          => 'Please choose a image',
         ];
     }
 }

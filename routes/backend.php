@@ -20,6 +20,8 @@ use App\Http\Controllers\Backend\News\BlogCategoryController;
 use App\Http\Controllers\Backend\News\BlogController;
 use App\Http\Controllers\Backend\Page\PageController;
 use App\Http\Controllers\Backend\Page\PageSectionElementController;
+use App\Http\Controllers\Backend\Room\AmenityController;
+use App\Http\Controllers\Backend\Room\RoomController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\TeamController;
@@ -153,6 +155,27 @@ Route::prefix('homepage/')->name('homepage.')->middleware(['auth'])->group(funct
     //recruitment process
     Route::get('recruitment-process', [RecruitmentProcessController::class, 'create'])->name('recruitment_process.create');
     Route::resource('recruitment-process', RecruitmentProcessController::class)->only(['store', 'update'])->names('recruitment_process');
+});
+
+
+//room
+Route::put('/room-upload-gallery/{id}', [RoomController::class,'uploadGallery'])->name('room.gallery-update');
+Route::post('/room/image-delete', [RoomController::class,'deleteGallery'])->name('room.gallery-delete');
+Route::get('/room/get-gallery/{id}', [RoomController::class,'getGallery'])->name('room.gallery-display');
+Route::get('/room/gallery/{key}', [RoomController::class,'gallery'])->name('room.gallery');
+Route::post('/room/status-update', [RoomController::class,'statusUpdate'])->name('room.status-update');
+Route::post('/room/data', [RoomController::class,'getDataForDataTable'])->name('room.data');
+Route::get('/room/trash', [RoomController::class,'trash'])->name('room.trash');
+Route::post('/room/trash/{id}/restore', [RoomController::class,'restore'])->name('room.restore');
+Route::delete('/room/trash/{id}/remove', [RoomController::class,'removeTrash'])->name('room.remove-trash');
+Route::resource('room', RoomController::class)->names('room');
+
+Route::prefix('room/basic-setup/')->name('room.basic-setup.')->middleware(['auth'])->group(function () {
+    //category
+    Route::get('amenity/trash', [AmenityController::class,'trash'])->name('amenity.trash');
+    Route::post('amenity/trash/{id}/restore', [AmenityController::class,'restore'])->name('amenity.restore');
+    Route::delete('amenity/trash/{id}/remove', [AmenityController::class,'removeTrash'])->name('amenity.remove-trash');
+    Route::resource('amenity', AmenityController::class)->names('amenity');
 });
 
 
