@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\Homepage\WelcomeRequest;
-use App\Http\Requests\Backend\ServiceRequest;
-use App\Http\Requests\Backend\TestimonialRequest;
 use App\Http\Requests\Frontend\CustomerInquiryRequest;
 use App\Models\Backend\CustomerInquiry;
-use App\Models\Backend\Service;
-use App\Models\Backend\Testimonial;
 use App\Traits\ControllerOps;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;

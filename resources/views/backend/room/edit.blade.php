@@ -1,7 +1,8 @@
 @extends('backend.layouts.master')
-@section('title',$page_title)
+@section('title', $page_title)
 @section('css')
-    <link href="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{asset('assets/backend/libs/glightbox/css/glightbox.min.css')}}" />
+
 @endsection
 @section('content')
     <div class="page-content">
@@ -10,12 +11,14 @@
 
             <div class="card">
                 <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">
-                        {{ $page_title }}
-                        <small class="text-danger fs-11">Only status is editable for customer inquiry </small>
-                    </h4>
+                    <h4 class="card-title mb-0 flex-grow-1">{{ $page_title }}</h4>
                     <div class="flex-shrink-0">
-                        <div class="d-flex justify-content-sm-end">
+
+                        <div class="d-flex justify-content-sm-end gap-2">
+                            <a href="{{ route('frontend.activity.show', $data['row']->slug) }}" class="btn btn-outline-primary waves-effect waves-light"
+                               target="_blank"
+                               title="View in Frontend">
+                                <i class="ri-eye-line align-bottom me-1"></i>
                             <a class="btn btn-outline-success waves-effect waves-light" href="{{route($base_route.'index')}}">
                                 <i class="ri-menu-2-line align-bottom me-1"></i> {{ $panel . ' List'}} </a>
                         </div>
@@ -32,6 +35,8 @@
 
 @section('js')
     <script src="{{asset('assets/backend/js/pages/form-validation.init.js')}}"></script>
-    <script src="{{asset('assets/backend/js/pages/password-addon.init.js')}}"></script>
+    <script src="{{asset('assets/backend/plugins/ckeditor/ckeditor.js')}}"></script>
     <script src="{{asset('assets/common/general.js')}}"></script>
+    @include($module.'includes/gallery')
+
 @endsection
