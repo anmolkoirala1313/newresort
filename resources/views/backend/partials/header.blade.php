@@ -3,14 +3,14 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>@yield('title') | {{ucwords(@$setting_data->title ?? 'Twins Travels')}}</title>
+    <title>@yield('title') | {{ucwords(@$setting_data->title ?? '')}}</title>
 
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ $setting_data->description ?? 'Twins Travels' }}">
+    <meta name="description" content="{{ $setting_data->description ?? '' }}">
     <meta name="author" content="Canosoft Technology" />
     <!-- App favicon -->
-    <link rel="shortcut icon" type="image/x-icon"  href="{{ $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}">
+    <link rel="shortcut icon" type="image/x-icon"  href="{{ $setting_data && $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}">
 
     <!-- jsvectormap css -->
     <link href="{{asset('assets/backend/libs/jsvectormap/css/jsvectormap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -51,19 +51,19 @@
                     <div class="navbar-brand-box horizontal-logo">
                         <a href="{{route('backend.dashboard')}}" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{ $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}" alt="" height="25">
+                                <img src="{{ $setting_data && $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}" alt="" height="25">
                             </span>
                             <span class="logo-lg">
-                                    <img src="{{ $setting_data->logo ?  asset(imagePath($setting_data->logo)) : ''}}" alt="Logo" height="55">
+                                    <img src="{{ $setting_data && $setting_data->logo ?  asset(imagePath($setting_data->logo)) : ''}}" alt="Logo" height="55">
                             </span>
                         </a>
 
                         <a href="{{route('backend.dashboard')}}" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{ $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}" alt="" height="25">
+                                <img src="{{ $setting_data && $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}" alt="" height="25">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : ''}}" alt="Logo" height="55">
+                                <img src="{{ $setting_data && $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : ''}}" alt="Logo" height="55">
                             </span>
                         </a>
                     </div>

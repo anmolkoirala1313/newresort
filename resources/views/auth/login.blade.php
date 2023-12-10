@@ -5,11 +5,12 @@
     <meta charset="utf-8" />
     <title>Sign In | {{@$setting_data->title}} - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ucwords(@$setting_data->description ?? 'Twins Travels') }}">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="{{ucwords(@$setting_data->description ?? '') }}">
     <meta name="author" content="Canosoft Technology" />
     <!-- App favicon -->
-    <link rel="shortcut icon" type="image/x-icon"  href="{{ $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}">
-    <link rel="canonical" href="https://twinstravels.com.np" />
+    <link rel="shortcut icon" type="image/x-icon"  href="{{ $setting_data && $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}">
+    <link rel="canonical" href="" />
 
     <!-- Layout config Js -->
     <script src="{{asset('assets/backend/js/layout.js')}}"></script>
@@ -47,7 +48,7 @@
                     <div class="text-center mt-sm-5 mb-4 text-white-50">
                         <div>
                             <a href="/" class="d-inline-block auth-logo">
-                                <img class="lazy" src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) :asset(imagePath($setting_data->logo))}}" alt="Logo" height="80">
+                                <img class="lazy" src="{{ $setting_data && $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) :asset(imagePath($setting_data->logo ?? ''))}}" alt="" height="80">
                             </a>
                         </div>
                         <p class="mt-3 fs-15 fw-medium">Admin Dashboard Access</p>

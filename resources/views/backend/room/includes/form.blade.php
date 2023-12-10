@@ -73,6 +73,12 @@
         @endif
     </div>
     <div class="col-lg-12">
+        <div class="mb-3">
+            {!! Form::label('amenity_id', 'Amenities', ['class' => 'form-label']) !!}
+            {!! Form::select('amenity_id[]', $data['amenities'],$page_method == 'edit' && $data['row']->amenities ? $data['row']->amenities->pluck('id'): null,['class'=>'form-select mb-3 select2','id'=>'amenity_id','multiple'=>'multiple']) !!}
+        </div>
+    </div>
+    <div class="col-lg-12">
         <div class="mb-3 editor">
             {!! Form::label('description', 'Description', ['class' => 'form-label']) !!}
             {!! Form::textarea('description', null,['class'=>'form-control ck-editor','id'=>'description','placeholder'=>'Enter description']) !!}
@@ -114,7 +120,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12 border-top mt-3">
+    <div class="col-lg-12 border-top mt-3 mb-3">
         <div class="hstack gap-2">
             {!! Form::submit($button,['class'=>'btn btn-success mt-3','id'=>'user-add-button']) !!}
         </div>

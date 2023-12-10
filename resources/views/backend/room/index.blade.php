@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{{asset('assets/backend/css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/backend/custom_css/datatable_style.css')}}">
     <link href="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{asset('assets/backend/libs/glightbox/css/glightbox.min.css')}}" />
+
     <style>
     .cke_contents{
         height: 400px!important;
@@ -26,7 +28,7 @@
                                     <div class="d-flex justify-content-sm-end gap-2">
                                         <button class="btn btn-outline-success waves-effect waves-light" type="button" data-bs-toggle="offcanvas"
                                                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                                            <i class="ri-add-line align-bottom me-1"></i> Add {{ $panel }}</button>
+                                            <i class="ri-add-line align-bottom me-1"></i> Add {{ $page }}</button>
                                         <a class="btn btn-outline-danger waves-effect waves-light" href="{{ route($base_route.'trash') }}">
                                             <i class="ri-delete-bin-7-line align-bottom me-1"></i>  Trash </a>
                                     </div>
@@ -41,8 +43,8 @@
                                     <tr>
                                         <th>S.N</th>
                                         <th>Title</th>
-                                        <th>Country</th>
-                                        <th>Category</th>
+                                        <th>Subtitle</th>
+                                        <th>price</th>
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
@@ -65,8 +67,12 @@
     <script src="{{asset('assets/backend/plugins/ckeditor/ckeditor.js')}}"></script>
     <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
     <script src="{{asset('assets/common/general.js')}}"></script>
+    <script src="{{asset('assets/backend/js/jquery-ui.min.js')}}"></script>
+
     @include($module.'includes.toast_message')
     @include($module.'includes.status_alert')
+    @include($module.'includes/gallery')
+
     <script type="text/javascript">
         let dataTables = $('#dataTable').DataTable({
             processing:true,
@@ -85,8 +91,8 @@
             columns :[
                 {data:'DT_RowIndex', name: 'DT_RowIndex', searchable:false, orderable: false},
                 {data:'title', name: 'title', orderable: true},
-                {data:'country', name: 'country', searchable:true, orderable: false},
-                {data:'category', name: 'category', searchable:true, orderable: true},
+                {data:'subtitle', name: 'subtitle', orderable: true},
+                {data:'price', name: 'price', searchable:true, orderable: false},
                 {data:'status', name: 'status', searchable:false, orderable: false},
                 {data:'action', name: 'action', searchable:false, orderable: false},
             ]

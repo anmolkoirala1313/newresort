@@ -26,6 +26,7 @@ class AmenityController extends BackendBaseController
     public function __construct()
     {
         $this->model            = new Amenity();
+        $this->image_path       = public_path(DIRECTORY_SEPARATOR.'storage'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR);
     }
 
 

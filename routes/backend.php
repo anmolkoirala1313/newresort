@@ -170,7 +170,7 @@ Route::post('/room/trash/{id}/restore', [RoomController::class,'restore'])->name
 Route::delete('/room/trash/{id}/remove', [RoomController::class,'removeTrash'])->name('room.remove-trash');
 Route::resource('room', RoomController::class)->names('room');
 
-Route::prefix('room/basic-setup/')->name('room.basic-setup.')->middleware(['auth'])->group(function () {
+Route::prefix('room/basic-setup/')->name('room.basic_setup.')->middleware(['auth'])->group(function () {
     //category
     Route::get('amenity/trash', [AmenityController::class,'trash'])->name('amenity.trash');
     Route::post('amenity/trash/{id}/restore', [AmenityController::class,'restore'])->name('amenity.restore');

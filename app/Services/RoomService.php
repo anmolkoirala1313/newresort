@@ -2,23 +2,23 @@
 
 namespace App\Services;
 
-use App\Models\Backend\Activity\Package;
+use App\Models\Backend\Room\Room;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 
-class PackageService {
+class RoomService {
 
 
     protected string $module        = 'backend.';
-    protected string $base_route    = 'backend.activity.package.';
-    protected string $view_path     = 'backend.activity.package.';
+    protected string $base_route    = 'backend.room.';
+    protected string $view_path     = 'backend.room.';
     private DataTables $dataTables;
-    private Package $model;
+    private Room $model;
 
     public function __construct(DataTables $dataTables)
     {
-        $this->model        = new Package();
+        $this->model        = new Room();
         $this->dataTables = $dataTables;
     }
 
@@ -27,12 +27,6 @@ class PackageService {
         $query = $this->model->query()
             ->orderBy('created_at', 'desc');
         return $this->dataTables->eloquent($query)
-            ->editColumn('country',function ($item){
-                return $item->country->title ?? '-';
-            })
-            ->editColumn('category',function ($item){
-                return $item->packageCategory->title ?? '-';
-            })
             ->editColumn('status',function ($item){
                 $params = [
                     'id'            => $item->id,
@@ -44,21 +38,11 @@ class PackageService {
             ->editColumn('action',function ($item){
                 $params = [
                     'id'            => $item->id,
-                    'key'           => $item->key,
+                    'slug'           => $item->slug,
                     'base_route'    => $this->base_route,
                 ];
                 return view($this->view_path.'.includes.dataTable_action', compact('params'));
 
-            })
-            ->filterColumn('country', function($query, $keyword) {
-                $query->whereHas('country', function($country) use($keyword){
-                    $country->where('title', 'like', "%" . $keyword . "%");
-                });
-            })
-            ->filterColumn('category', function($query, $keyword) {
-                $query->whereHas('packageCategory', function($category) use($keyword){
-                    $category->where('title', 'like', "%" . $keyword . "%");
-                });
             })
             ->rawColumns(['action','status'])
             ->addIndexColumn()

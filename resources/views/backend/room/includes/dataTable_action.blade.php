@@ -1,8 +1,8 @@
 <div class="row">
     <div class="hstack gap-2">
-            <a href="{{ route('frontend.activity.show', $params['key']) }}" title="View in frontend" target="_blank"
-               class="btn btn-outline-info waves-effect waves-light"><i class="ri-eye-line"></i></a>
-        <a href="{{ route($params['base_route'].'gallery',$params['key']) }}" title="Add Gallery Images"
+{{--            <a href="{{ route('frontend.activity.show', $params['slug']) }}" title="View in frontend" target="_blank"--}}
+{{--               class="btn btn-outline-info waves-effect waves-light"><i class="ri-eye-line"></i></a>--}}
+        <a href="{{ route($params['base_route'].'gallery',$params['slug']) }}" title="Add Gallery Images"
            class="btn btn-outline-primary waves-effect waves-light"><i class="ri-image-2-fill"></i></a>
         <a href="{{ route($params['base_route'].'edit',$params['id']) }}" title="Edit"
            class="btn btn-outline-success waves-effect waves-light"><i class="ri-pencil-fill"></i></a>

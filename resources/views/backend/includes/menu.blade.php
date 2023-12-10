@@ -72,29 +72,29 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link collapsed" href="#sidebarTourMultilevel" data-bs-toggle="collapse" role="button" aria-controls="sidebarTourMultilevel">
-                        <i class="ri-links-line"></i> <span data-key="t-multi-level-career">Career</span>
+                    <a class="nav-link menu-link collapsed" href="#sidebarBlogMultilevel" data-bs-toggle="collapse" role="button" aria-controls="sidebarBlogMultilevel">
+                        <i class="ri-ancient-gate-line"></i> <span data-key="t-multi-level-news">Room</span>
                     </a>
-                    <div class="menu-dropdown collapse" id="sidebarTourMultilevel" style="">
+                    <div class="menu-dropdown collapse" id="sidebarBlogMultilevel" style="">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#sidebarBasicSetupPackage" class="nav-link collapsed" data-bs-toggle="collapse" role="button" aria-controls="sidebarBasicSetupPackage"
-                                   data-key="t-level-basic-career"> Basic Setup
+                                <a href="#sidebarBasicSetupBlog" class="nav-link collapsed" data-bs-toggle="collapse" role="button" aria-controls="sidebarBasicSetupBlog"
+                                   data-key="t-level-basic-blogs"> Basic Setup
                                 </a>
-                                <div class="menu-dropdown collapse" id="sidebarBasicSetupPackage" style="">
+                                <div class="menu-dropdown collapse" id="sidebarBasicSetupBlog" style="">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
-                                            <a href="{{ route('backend.career.basic_setup.category.index') }}"
-                                               class="nav-link {{request()->route()->getName() == 'backend.career.basic_setup.category.index' ? 'active':''}}"
-                                               data-key="t-level-basic-career"> Category </a>
+                                            <a href="{{ route('backend.room.basic_setup.amenity.index') }}"
+                                               class="nav-link {{request()->route()->getName() == 'backend.room.basic_setup.amenity.index' ? 'active':''}}"
+                                               data-key="t-level-basic-blogs"> Amenity </a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('backend.career.job.index') }}"
-                                   class="nav-link {{request()->route()->getName() == 'backend.career.job.index' ? 'active':''}}"
-                                   data-key="t-multi-level-career"> Job </a>
+                                <a href="{{ route('backend.room.index') }}"
+                                   class="nav-link {{request()->route()->getName() == 'backend.room.index' ? 'active':''}}"
+                                   data-key="t-multi-level-news"> List </a>
                             </li>
                         </ul>
                     </div>
@@ -142,11 +142,11 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'formbuilder::forms.index' || \Request::route()->getName() == 'formbuilder::forms.create' || \Request::route()->getName() == 'formbuilder::forms.edit') active @endif" href="{{route('formbuilder::forms.index')}}">
-                        <i class="ri-pages-line"></i> <span data-key="t-widgets">Forms</span>
-                    </a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'formbuilder::forms.index' || \Request::route()->getName() == 'formbuilder::forms.create' || \Request::route()->getName() == 'formbuilder::forms.edit') active @endif" href="{{route('formbuilder::forms.index')}}">--}}
+{{--                        <i class="ri-pages-line"></i> <span data-key="t-widgets">Forms</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{request()->route()->getName() == 'backend.service.index' ? 'active':''}}" href="{{route('backend.service.index')}}">

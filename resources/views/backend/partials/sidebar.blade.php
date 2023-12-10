@@ -5,19 +5,19 @@
         <!-- Dark Logo-->
         <a href="{{route('backend.dashboard')}}" class="logo logo-dark">
                     <span class="logo-sm">
-                       <img src="{{ $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}" height="25">
+                       <img src="{{ $setting_data && $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}" height="25">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ $setting_data->logo ?  asset(imagePath($setting_data->logo)) : ''}}" height="55">
+                        <img src="{{ $setting_data && $setting_data->logo ?  asset(imagePath($setting_data->logo)) : ''}}" height="55">
                     </span>
         </a>
         <!-- Light Logo-->
         <a href="{{route('backend.dashboard')}}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}" height="40">
+                        <img src="{{ $setting_data && $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}" height="40">
                     </span>
                      <span class="logo-lg">
-                        <img src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : ''}}" height="55">
+                        <img src="{{ $setting_data && $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : ''}}" height="55">
 
                      </span>
         </a>

@@ -13,7 +13,7 @@ class Room extends BackendBaseModel
 {
     use HasFactory, SoftDeletes, Sluggable, Slug;
 
-    protected $table    ='blogs';
+    protected $table    ='rooms';
     protected $fillable = ['id','title','subtitle','slug','price','description','image','cover','video','meta_title','meta_tags','meta_description','status','created_by','updated_by'];
 
     public function amenities(): BelongsToMany
