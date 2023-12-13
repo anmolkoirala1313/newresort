@@ -16,7 +16,7 @@ Dropzone.options.myDropzone = {
         var myDropzone = this;
         // console.log(album_id);
         $.ajax({
-            url: "/adminsite/room/get-gallery/" + room_id,
+            url: "/administration/room/get-gallery/" + room_id,
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -50,7 +50,7 @@ Dropzone.options.myDropzone = {
                 });
                 $.ajax({
                     type: 'POST',
-                    url: '/adminsite/room/image-delete',
+                    url: '/administration/room/image-delete',
                     data: { filename: name },
                     success: function(data) {
                         total_photos_counter--;

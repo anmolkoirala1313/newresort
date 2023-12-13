@@ -157,7 +157,7 @@ class RoomController extends BackendBaseController
         $this->page_method = 'gallery';
         $this->page_title  = 'Gallery list '.$this->page;
         $data              = [];
-        $data['row']       = $this->model->where('key',$key)->first();
+        $data['row']       = $this->model->where('slug',$key)->first();
 
         return view($this->loadResource($this->view_path.'gallery'), compact('data'));
     }

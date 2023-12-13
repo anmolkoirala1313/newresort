@@ -15,7 +15,7 @@
 
                         <div class="d-flex justify-content-sm-end">
                             <a class="btn btn-outline-success waves-effect waves-light" href="{{route($base_route.'index')}}">
-                                <i class="ri-menu-2-line align-bottom me-1"></i> {{ $panel . ' List'}} </a>
+                                <i class="ri-menu-2-line align-bottom me-1"></i> {{ $page . ' List'}} </a>
                         </div>
 
                     </div>
@@ -32,7 +32,7 @@
                             <h2 class="page-heading">Upload your Images <span id="counter"></span></h2>
                             <div class="invalid-feedback">    </div>
                             <script type="text/javascript">
-                                var package_id = "{{$data['row']->id}}";
+                                var room_id = "{{$data['row']->id}}";
                             </script>
                             {!! Form::open(['url'=>route($base_route.'gallery-update', $data['row']->id),'method'=>'PUT','class'=>'dropzone','id'=>'myDropzone','enctype'=>'multipart/form-data']) !!}
                             <div class="dz-message">
@@ -89,6 +89,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <p class="text-muted mb-2">Recommended size: 1920 x 1200px</p>
 
                         </div>
                     </div>
@@ -102,7 +103,7 @@
 @section('js')
     <script src="{{asset('assets/common/general.js')}}"></script>
     <script src="{{asset('assets/backend/plugins/dropzone/dropzone.js')}}"></script>
-    <script src="{{asset('assets/backend/plugins/dropzone/package_dropzone.config.js')}}"></script>
+    <script src="{{asset('assets/backend/plugins/dropzone/room_dropzone.config.js')}}"></script>
     @include($module.'includes.toast_message')
 
 @endsection
