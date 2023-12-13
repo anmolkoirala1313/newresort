@@ -12,12 +12,12 @@
             {!! Form::hidden('id', isset($data['row']) ? $data['row']->id : null,['class'=>'form-control','id'=>'id','placeholder'=>'Enter title']) !!}
         </div>
     </div>
-{{--    <div class="col-lg-12">--}}
-{{--        <div class="mb-3">--}}
-{{--            {!! Form::label('action_subtitle', 'Subtitle', ['class' => 'form-label']) !!}--}}
-{{--            {!! Form::text('action_subtitle', null,['class'=>'form-control','id'=>'action_subtitle','placeholder'=>'Enter subtitle']) !!}--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="col-lg-12">
+        <div class="mb-3">
+            {!! Form::label('action_subtitle', 'Subtitle', ['class' => 'form-label']) !!}
+            {!! Form::text('action_subtitle', null,['class'=>'form-control','id'=>'action_subtitle','placeholder'=>'Enter subtitle']) !!}
+        </div>
+    </div>
     <div class="col-lg-6">
         <div class="mb-3">
             {!! Form::label('action_button', 'Button', ['class' => 'form-label']) !!}

@@ -1,153 +1,110 @@
-</main>
-<!-- main-area-end -->
-
-
-<!-- footer-area -->
-<footer>
-    <div class="footer-area footer-bg" data-background="{{ asset('assets/frontend/img/bg/footer_bg.jpg') }}">
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-top">
         <div class="container">
-            <div class="footer-top">
-                <div class="row">
-                    <div class="col-lg-3 col-md-7">
-                        <div class="footer-widget">
-                            <h4 class="fw-title">Information</h4>
-                            <div class="footer-info">
-                                <ul class="list-wrap">
-                                    <li>
-                                        <div class="icon">
-                                            <i class="flaticon-pin"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>{{ $setting_data->address ?? '' }}</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="flaticon-phone-call"></i>
-                                        </div>
-                                        <div class="content">
-                                            <a href="tel:{{ $setting_data->phone ?? $setting_data->mobile }}">{{ $setting_data->phone ?? $setting_data->mobile }}</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="flaticon-mail"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p><a href="mailto:{{ $setting_data->email }}">{{ $setting_data->email }}</a></p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-5 col-sm-6">
-                        @if($footer_nav_data1!==null)
-                            <div class="footer-widget">
-                                <h4 class="fw-title">{{ $footer_nav_title1 ?? ''}}</h4>
-                                <div class="footer-link">
-                                    <ul class="list-wrap">
-                                        @foreach(@$footer_nav_data1 as $nav)
-                                            @if(empty(@$nav->children[0]))
-                                                <li><a href="{{get_menu_url(@$nav->type, @$nav)}}" target="{{@$nav->target ? '_blank':''}}">{{ @$nav->name ?? @$nav->title ?? ''}} </a></li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="col-lg-3 col-md-5 col-sm-6">
-                        @if($footer_nav_data1!==null)
-                            <div class="footer-widget">
-                                <h4 class="fw-title">{{ $footer_nav_title2 ?? ''}}</h4>
-                                <div class="footer-link">
-                                    <ul class="list-wrap">
-                                        @foreach(@$footer_nav_data2 as $nav)
-                                            @if(empty(@$nav->children[0]))
-                                                <li><a href="{{get_menu_url(@$nav->type, @$nav)}}" target="{{@$nav->target ? '_blank':''}}">{{ @$nav->name ?? @$nav->title ?? ''}} </a></li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="col-lg-4 col-md-7">
-                        <div class="footer-widget">
-                            <h4 class="fw-title">About Company</h4>
-                            <div class="footer-newsletter">
-                                <p>{{ $setting_data->description ?? '' }}</p>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="footer-column footer-about">
+                        <h3 class="footer-title">About Company</h3>
+                        <p class="footer-about-text">
+                            <a href="/"><img class="lazy" data-src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : asset(imagePath($setting_data->logo))}}" style="max-width: 230px;" alt=""></a>
+                            {{ $setting_data->description ?? '' }}
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="left-sider">
-                            <div class="f-logo">
-                                <a href="/"><img class="lazy" data-src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : asset(imagePath($setting_data->logo))}}" style="max-width: 230px;" alt=""></a>
-                            </div>
-                            <div class="copyright-text">
-                                <p>Copyright ©  <a href="/">{{@$setting_data->title ?? ''}}</a> | developed by <a href="https://www.canosoft.com.np/" target="_blank">Canosoft Techonology</a> | All Right Reserved</p>
-                            </div>
-                        </div>
+                <div class="col-md-3 offset-md-1">
+                    @if($footer_nav_data1!==null)
+                        <div class="footer-column footer-explore clearfix">
+                        <h3 class="footer-title">{{ $footer_nav_title1 ?? ''}}</h3>
+                        <ul class="footer-explore-list list-unstyled">
+                            @foreach(@$footer_nav_data1 as $nav)
+                                @if(empty(@$nav->children[0]))
+                                    <li><a href="{{get_menu_url(@$nav->type, @$nav)}}" target="{{@$nav->target ? '_blank':''}}">{{ @$nav->name ?? @$nav->title ?? ''}} </a></li>
+                                @endif
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="col-md-6">
-                        <div class="footer-social">
-                            <ul class="list-wrap">
-                                @if(@$setting_data->facebook)
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                @endif
-                                @if(@$setting_data->instagram)
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                @endif
-                                @if(@$setting_data->facebook)
-                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                @endif
-                                @if(@$setting_data->linkedin)
-                                    <li><a href="{{$setting_data->linkedin}}"><i class="fab fa-linkedin"></i></a></li>
-                                @endif
-                                @if(@$setting_data->ticktock)
-                                    <li><a href="{{$setting_data->ticktock}}"><i class="fab fa-tiktok"></i></a></li>
-                                @endif
+                    @endif
+                </div>
+                <div class="col-md-3 offset-md-1">
+                    @if($footer_nav_data2!==null)
+                        <div class="footer-column footer-explore clearfix">
+                            <h3 class="footer-title">{{ $footer_nav_title2 ?? ''}}</h3>
+                            <ul class="footer-explore-list list-unstyled">
+                                @foreach(@$footer_nav_data2 as $nav)
+                                    @if(empty(@$nav->children[0]))
+                                        <li><a href="{{get_menu_url(@$nav->type, @$nav)}}" target="{{@$nav->target ? '_blank':''}}">{{ @$nav->name ?? @$nav->title ?? ''}} </a></li>
+                                    @endif
+                                @endforeach
                             </ul>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-column footer-contact">
+                        <h3 class="footer-title">Contact</h3>
+                        <p class="footer-contact-text">{{ $setting_data->address ?? '' }}</p>
+                        <div class="footer-contact-info">
+                            <p class="footer-contact-phone"><span class="flaticon-call"></span>
+                                <a href="tel:{{ $setting_data->phone ?? $setting_data->mobile }}">{{ $setting_data->phone ?? $setting_data->mobile }}</a></p>
+                            <p class="footer-contact-mail">
+                                <a href="mailto:{{ $setting_data->email }}">{{ $setting_data->email }}</a></p>
+                        </div>
+                        <div class="footer-about-social-list">
+                            @if(@$setting_data->facebook)
+                                <a href="#"><i class="ti-facebook"></i></a>
+                            @endif
+                            @if(@$setting_data->instagram)
+                                <a href="#"><i class="ti-instagram"></i></a>
+                            @endif
+                            @if(@$setting_data->youtube)
+                                <a href="#"><i class="ti-youtube"></i></a>
+                            @endif
+                            @if(@$setting_data->linkedin)
+                                <a href="#"><i class="ti-linkedin"></i></a>
+                            @endif
+                            @if(@$setting_data->ticktock)
+                                <a href="#"><i class="ti-tiktok"></i></a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-bottom-inner">
+                        <p class="footer-bottom-copy-right">© Copyright 2023 <a href="/">{{@$setting_data->title ?? ''}}</a>
+                            | developed by <a href="https://www.canosoft.com.np/" target="_blank">Canosoft Techonology</a> | All Right Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
-<!-- footer-area-end -->
-
-
-<!-- JS here -->
-<script src="{{ asset('assets/frontend/js/vendor/jquery-3.6.0.min.js') }}"></script>
+<!-- jQuery -->
+<script src="{{ asset('assets/frontend/js/jquery-3.6.3.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery-migrate-3.0.0.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/modernizr-2.6.2.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.isotope.v3.0.2.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/pace.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/popper.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/jquery.odometer.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/jquery.appear.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/gsap.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/ScrollTrigger.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/SplitText.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/gsap-animation.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/jarallax.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/jquery.parallaxScroll.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/particles.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/jquery.easypiechart.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/jquery.inview.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/slick.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/ajax-form.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/aos.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/wow.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-<script src="{{ asset('assets/common/lazyload.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/scrollIt.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.stellar.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.magnific-popup.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/YouTubePopUp.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/select2.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/datepicker.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/smooth-scroll.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/custom.js') }}"></script>
 @yield('js')
 @stack('scripts')
 </body>
-
 </html>

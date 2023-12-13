@@ -13,6 +13,6 @@ class Service extends BackendBaseModel
     use HasFactory, SoftDeletes, Slug;
 
     protected $table    ='services';
-    protected $fillable = ['id','title','key','description','image','status','created_by','updated_by'];
+    protected $fillable = ['id','title','subtitle','key','description','image','status','created_by','updated_by'];
 
 }

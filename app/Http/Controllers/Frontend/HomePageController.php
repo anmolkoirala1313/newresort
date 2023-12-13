@@ -17,6 +17,7 @@ use App\Models\Backend\Homepage\Welcome;
 use App\Models\Backend\ManagingDirector;
 use App\Models\Backend\News\Blog;
 use App\Models\Backend\Page\PageSectionGallery;
+use App\Models\Backend\Room\Room;
 use App\Models\Backend\Service;
 use App\Models\Backend\Setting;
 use App\Models\Backend\Team;
@@ -61,12 +62,11 @@ class HomePageController extends BackendBaseController
         $data['sliders']            = Slider::active()->descending()->get();
         $data['testimonials']       = Testimonial::active()->descending()->limit(8)->get();
         $data['services']           = Service::active()->latest()->take(4)->get();
-        $data['blogs']              = Blog::active()->descending()->latest()->take(3)->get();
-        $data['jobs']               = Job::active()->descending()->latest()->take(6)->get();
+        $data['blogs']              = Blog::active()->descending()->latest()->take(5)->get();
         $data['homepage']           = Welcome::first();
-        $data['director']           = ManagingDirector::active()->orderBy('order', 'asc')->get();
         $data['map']                = Setting::first()->google_map;
         $data['clients']            = Client::active()->descending()->latest()->take(10)->get();
+        $data['rooms']              = Room::active()->descending()->latest()->take(6)->get();
 
         return view($this->loadResource($this->view_path.'homepage'), compact('data'));
     }

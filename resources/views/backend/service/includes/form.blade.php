@@ -5,10 +5,16 @@
 @endif
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-6">
         <div class="mb-3">
             {!! Form::label('title', 'Title', ['class' => 'form-label required']) !!}
-            {!! Form::text('title', null,['class'=>'form-control','id'=>'name','placeholder'=>'Enter title']) !!}
+            {!! Form::text('title', null,['class'=>'form-control','id'=>'title','placeholder'=>'Enter title']) !!}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="mb-3">
+            {!! Form::label('subtitle', 'Subtitle', ['class' => 'form-label']) !!}
+            {!! Form::text('subtitle', null,['class'=>'form-control','id'=>'subtitle','placeholder'=>'Enter subtitle']) !!}
         </div>
     </div>
     <div class="col-lg-12">

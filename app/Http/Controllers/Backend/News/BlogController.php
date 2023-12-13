@@ -20,7 +20,7 @@ class BlogController extends BackendBaseController
     protected string $module        = 'backend.';
     protected string $base_route    = 'backend.news.blog.';
     protected string $view_path     = 'backend.news.blog.';
-    protected string $page         = 'Blog';
+    protected string $page          = 'Blog';
     protected string $folder_name   = 'blog';
     protected string $page_title, $page_method, $image_path;
     protected object $model;
@@ -54,7 +54,7 @@ class BlogController extends BackendBaseController
             $request->request->add(['key' => $this->model->changeTokey($request['title'])]);
             $request->request->add(['created_by' => auth()->user()->id ]);
             if($request->hasFile('image_input')){
-                $image_name = $this->uploadImage($request->file('image_input'),'850','480');
+                $image_name = $this->uploadImage($request->file('image_input'),'1900','1200');
                 $request->request->add(['image'=>$image_name]);
             }
 
@@ -80,7 +80,7 @@ class BlogController extends BackendBaseController
             $request->request->add(['updated_by' => auth()->user()->id ]);
 
             if($request->hasFile('image_input')){
-                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'850','480');
+                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'1900','1200');
                 $request->request->add(['image'=>$image_name]);
             }
 
