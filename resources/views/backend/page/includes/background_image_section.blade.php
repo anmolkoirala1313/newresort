@@ -50,7 +50,7 @@
                         <div class="mb-1">
                             {!! Form::label('image_input', 'Images', ['class' => 'form-label required']) !!}
                             {!! Form::file('image_input', ['class'=>'form-control','id'=>'background_image_section']) !!}
-                            <p class="text-muted mb-2">Recommended size: 600 x 550px</p>
+                            <p class="text-muted mb-2">Recommended size: 745 x 465px</p>
                         </div>
                         @if($basic_image_section && $basic_image_section->image)
                             <div class="col-xxl-4 col-xl-4 col-sm-6">

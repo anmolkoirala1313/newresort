@@ -1,31 +1,29 @@
-<section class="request-area request-bg" data-background="{{ asset('assets/frontend/img/bg/request_bg.jpg') }}">
+<section class="video-wrapper video section-padding bg-img bg-fixed" data-overlay-dark="3" data-background="{{asset('assets/frontend/img/slider/2.jpg')}}">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="request-content tg-heading-subheading animation-style2">
-                    <h2 class="title tg-element-title">{{ $element->first()->title ?? '' }}</h2>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="request-content-right">
-                    <div class="request-contact">
-                        <div class="icon">
-                            <i class="flaticon-phone-call"></i>
-                        </div>
-                        <div class="content">
-                            <a href="tel:{{ $setting_data->phone ?? $setting_data->mobile ?? '' }}">{{ $setting_data->phone ?? $setting_data->mobile ?? '' }}</a>
-                        </div>
-                    </div>
-                    @if($element->first()->button_link)
-                        <div class="request-btn">
-                            <a href="{{ $element->first()->button_link }}" class="btn">{{ $element->first()->button ?? 'Learn More' }}</a>
-                        </div>
-                    @endif
-                </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
+                <div class="section-subtitle"><span>{{ $element->first()->subtitle ?? '' }}</span></div>
+                <div class="section-title"><span>{{ $element->first()->title ?? '' }}</span></div>
             </div>
         </div>
-    </div>
-    <div class="request-shape">
-        <img src="{{ asset('assets/frontend/img/images/request_shape.png') }}" alt="">
+        <div class="row">
+            <div class="text-center col-md-12 d-flex justify-content-center align-items-center">
+                @if($element->first()->button_link)
+                    <div class="butn-dark mr-3" style="margin: 10px 20px 0px 0px;">
+                        <a href="{{ $element->first()->button_link }}"><span>{{ $element->first()->button ?? 'Learn More' }}</span></a>
+                    </div>
+                @endif
+                @if($element->first()->list_title)
+                    <a class="vid" style="margin-top:10px" href="{{ $element->first()->list_title }}">
+                        <div class="vid-butn">
+                            <span class="icon">
+                                <i class="ti-control-play" style="position: relative;top: 28px;left: 5px;"></i>
+                            </span>
+                        </div>
+                    </a>
+                @endif
+            </div>
+        </div>
     </div>
 </section>

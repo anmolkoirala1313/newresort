@@ -38,8 +38,8 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="mb-2 mt-2">
-                            <label class="form-label required"> Description <span class="text-danger">* write 800 characters only</span></label>
-                            <textarea class="form-control" maxlength="1000" rows="14" name="description" id="basic_editor" required>{!! $basic_element->description ?? null !!}</textarea>
+                            <label class="form-label required"> Description <span class="text-danger">* recommended characters: 900 to 999  </span></label>
+                            <textarea class="form-control ck-editor" maxlength="1000" rows="14" name="description" id="basic_editor" required>{!! $basic_element->description ?? null !!}</textarea>
                             <div class="invalid-feedback">
                                 Please write the small summary for basic section.
                             </div>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="mb-2">
                             {!! Form::label('image_input', 'Images', ['class' => 'form-label required']) !!}
                             {!! Form::file('image_input', ['class'=>'form-control','id'=>'basic_image_input']) !!}
@@ -83,6 +83,12 @@
                                 </div>
                             </div>
                         @endif
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            {!! Form::label('list_title', 'Video', ['class' => 'form-label']) !!}
+                            {!! Form::text('list_title', @$basic_element->list_title ?? null,['class'=>'form-control','id'=>'list_title','placeholder'=>'Enter video link']) !!}
+                        </div>
                     </div>
                 </div>
             </div>

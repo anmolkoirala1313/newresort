@@ -13,7 +13,7 @@
     </div>
     <div class="col-lg-6">
         <div class="mb-1">
-            {!! Form::label('image_input', 'Images', ['class' => 'form-label required']) !!}
+            {!! Form::label('image_input', 'Images', ['class' => 'form-label']) !!}
             {!! Form::file('image_input', ['class'=>'form-control','id'=>'image_input']) !!}
             <p class="text-muted mb-2">Recommended size: 1920 x 765px</p>
         </div>

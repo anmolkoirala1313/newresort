@@ -27,7 +27,7 @@
 </style>
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'breadcrumb_bg.jpg', 'page_image'=> $data['row']->image])
+    @include($module.'includes.breadcrumb',['breadcrumb_image'=> '3.jpg', 'page_image'=> $data['row']->image])
 
     @foreach($data['section_elements'] as $index=>$element)
         @if($index == 'basic_section' && count($element)>0)

@@ -96,8 +96,10 @@ class PageSectionElementController extends BackendBaseController
         $data['section']    = ucfirst(str_replace('_',' ',$request['section_name']));
         DB::beginTransaction();
         try {
+            $width = $request['section_name'] == 'basic_section' ? '550':'745';
+            $height = $request['section_name'] == 'basic_section' ? '650':'465';
             if($request->hasFile('image_input')){
-                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'550','650');
+                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,$width,$height);
                 $request->request->add(['image'=>$image_name]);
             }
             $request->request->add(['status' => true ]);

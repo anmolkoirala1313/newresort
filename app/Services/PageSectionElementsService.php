@@ -86,8 +86,10 @@ class PageSectionElementsService {
             }
         }
         else{
+            $width = $request['section_name'] == 'basic_section' ? '550':'745';
+            $height = $request['section_name'] == 'basic_section' ? '650':'465';
             if ($request->hasFile('image_input')) {
-                $image_name = $this->uploadImage($request->file('image_input'), '550','650');
+                $image_name = $this->uploadImage($request->file('image_input'), $width,$height);
                 $request->request->add(['image' => $image_name]);
             }
 
