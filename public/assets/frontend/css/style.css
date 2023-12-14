@@ -3216,6 +3216,7 @@ hr {
 /* ======= Clients style ======= */
 .clients {
     background-color: #fff;
+    padding: 60px 0 60px 0;
 }
 .clients .owl-carousel {
     margin: 20px 0;

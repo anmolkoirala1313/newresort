@@ -6,13 +6,15 @@
                 <div class="col-md-3">
                     <div class="footer-column footer-about">
                         <h3 class="footer-title">About Company</h3>
+                        <a href="/">
+                            <img class="lazy" data-src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : asset(imagePath($setting_data->logo))}}" style="max-width: 230px;" alt="">
+                        </a>
                         <p class="footer-about-text">
-                            <a href="/"><img class="lazy" data-src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : asset(imagePath($setting_data->logo))}}" style="max-width: 230px;" alt=""></a>
                             {{ $setting_data->description ?? '' }}
                         </p>
                     </div>
                 </div>
-                <div class="col-md-3 offset-md-1">
+                <div class="col-md-3">
                     @if($footer_nav_data1!==null)
                         <div class="footer-column footer-explore clearfix">
                         <h3 class="footer-title">{{ $footer_nav_title1 ?? ''}}</h3>
@@ -26,7 +28,7 @@
                     </div>
                     @endif
                 </div>
-                <div class="col-md-3 offset-md-1">
+                <div class="col-md-3">
                     @if($footer_nav_data2!==null)
                         <div class="footer-column footer-explore clearfix">
                             <h3 class="footer-title">{{ $footer_nav_title2 ?? ''}}</h3>

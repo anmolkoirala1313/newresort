@@ -323,12 +323,12 @@
 
     @if(count($data['blogs'])>0)
         <!-- News -->
-        <section class="news section-padding bg-blck">
+        <section class="news section-padding bg-cream">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-subtitle"><span>Hotel Blog</span></div>
-                        <div class="section-title"><span>Read Our Latest Updates</span></div>
+                        <div class="section-title">Read Our Latest Updates</div>
                     </div>
                 </div>
                 <div class="row">
@@ -355,34 +355,31 @@
             </div>
         </section>
     @endif
-    <section class="clients">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="owl-carousel owl-theme">
-                        <div class="clients-logo">
-                            <a href="#0"><img src="img/clients/1.png" alt=""></a>
-                        </div>
-                        <div class="clients-logo">
-                            <a href="#0"><img src="img/clients/2.png" alt=""></a>
-                        </div>
-                        <div class="clients-logo">
-                            <a href="#0"><img src="img/clients/3.png" alt=""></a>
-                        </div>
-                        <div class="clients-logo">
-                            <a href="#0"><img src="img/clients/4.png" alt=""></a>
-                        </div>
-                        <div class="clients-logo">
-                            <a href="#0"><img src="img/clients/5.png" alt=""></a>
-                        </div>
-                        <div class="clients-logo">
-                            <a href="#0"><img src="img/clients/6.png" alt=""></a>
+    @if(count( $data['clients']) > 0)
+        <section class="clients">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-subtitle"><span>Our Working Link</span></div>
+                        <div class="section-title">Companies We Collaborate With</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="owl-carousel owl-theme">
+                            @foreach($data['clients'] as $index=>$client)
+                                <div class="clients-logo">
+                                    <a href="{{ $client->link ?? '#' }}" target="{{ ($client->link !== null) ? '_blank':'' }}">
+                                        <img src="{{ asset(imagePath($client->image)) }}" alt="" />
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 @endsection
 
 @section('js')
