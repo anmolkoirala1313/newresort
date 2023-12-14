@@ -1,28 +1,53 @@
-<section class="services-area-four">
+<section class="services section-padding3">
     <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-6">
-                <div class="section-title mb-40 tg-heading-subheading animation-style2">
-                    <span class="sub-title tg-element-title">{{ $element->first()->subtitle ?? '' }}</span>
-                    <h2 class="title tg-element-title">{{ $element->first()->title ?? '' }}</h2>
-                </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-subtitle">{{ $element->first()->subtitle ?? '' }}</div>
+                <div class="section-title">{{ $element->first()->title ?? '' }}</div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            @foreach($element as $index=>$row)
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                    <div class="services-item-four">
-                        <div class="services-icon-four">
-                            <i class="{{ get_flash_card_icons($index) }}"></i>
+        @foreach($element as $index=>$row)
+            @if($loop->odd)
+                <div class="row">
+                    <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                        <div class="img left">
+                                <img src="{{ asset(imagePath($row->image)) }}" alt="">
                         </div>
-                        <div class="services-content-four">
-                            <h2 class="title"><a>{{$row->list_title ?? ''}}</a></h2>
-                            <p>{{$row->list_description ?? ''}}</p>
+                    </div>
+                    <div class="col-md-6 p-0 bg-cream valign animate-box" data-animate-effect="fadeInRight">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <div class="info">
+                                    <h6>{{$row->list_subtitle ?? ''}}</h6>
+                                </div>
+                                <h4>{{$row->list_title ?? ''}}</h4>
+                                <p class="text-align-justify">{{$row->list_description ?? ''}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
+            @else
+                <div class="row">
+                    <div class="col-md-6 p-0 animate-box bg-cream order2 valign " data-animate-effect="fadeInLeft">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <div class="info">
+                                    <h6>{{$row->list_subtitle ?? ''}}</h6>
+                                </div>
+                                <h4>{{$row->list_title ?? ''}}</h4>
+                                <p class="text-align-justify">{{$row->list_description ?? ''}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
+                        <div class="img">
+                            <img src="{{ asset(imagePath($row->image)) }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
     </div>
 </section>
+
 
