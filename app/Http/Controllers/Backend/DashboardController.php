@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 class DashboardController extends BackendBaseController
 {
     protected string $module        = 'backend.';
-    protected string $page         = 'Dashboard';
+    protected string $page          = 'Dashboard';
     protected string $base_route    = 'backend.';
     protected string $view_path     = 'backend.';
 
