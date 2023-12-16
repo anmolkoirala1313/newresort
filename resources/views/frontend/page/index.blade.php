@@ -1,5 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title') {{ $page_title }} @endsection
+@section('css')
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/magnific-popup.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/common/timeline.css') }}" />
 <style>

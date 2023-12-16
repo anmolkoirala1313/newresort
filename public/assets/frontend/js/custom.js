@@ -334,7 +334,7 @@ $(function () {
 
     // Restaurant Menu owlCarousel
     $('.restaurant-menu .owl-carousel').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 0,
         autoplay: false,
         dots: false,

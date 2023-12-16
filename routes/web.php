@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\ContactUsController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\News\BlogController;
 use App\Http\Controllers\Frontend\Page\PageController;
+use App\Http\Controllers\Frontend\Room\RoomController;
 use App\Http\Controllers\Frontend\Service\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,12 @@ Route::get('/job', [JobController::class, 'index'])->name('job.index');
 Route::get('/job/search/', [JobController::class, 'search'])->name('job.search');
 Route::get('/job/{slug}', [JobController::class, 'show'])->name('job.show');
 Route::get('/job/category/{slug}', [JobController::class, 'category'])->name('job.category');
+
+//room
+Route::get('/room', [RoomController::class, 'index'])->name('room.index');
+Route::get('/room/search/', [RoomController::class, 'search'])->name('room.search');
+Route::get('/room/{slug}', [RoomController::class, 'show'])->name('room.show');
+Route::get('/room/amenity/{slug}', [RoomController::class, 'amenities'])->name('room.amenities');
 
 
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
