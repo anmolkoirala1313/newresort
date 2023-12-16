@@ -19,9 +19,4 @@ trait Slug {
 
         ];
     }
-
-    public function changeTokey($title)
-    {
-        return Str::slug($title);
-    }
 }

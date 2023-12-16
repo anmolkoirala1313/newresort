@@ -56,7 +56,7 @@ class PageSectionElementsService {
                 $subheading  =  array_key_exists($i, $request->input('subtitle')) ? $request->input('subtitle')[$i] : null;
 
                 if (array_key_exists($i,$request->file('image_input'))){
-                    $image_name  = $this->uploadImage( $request->file('image_input')[$i], '776','464');
+                    $image_name  = $this->uploadImage( $request->file('image_input')[$i], '700','400');
                     $request->request->add(['image' => $image_name]);
                 }
                 $this->model->create([
@@ -65,6 +65,7 @@ class PageSectionElementsService {
                     'subtitle'            => $subheading,
                     'image'               => $request['image'] ?? null,
                     'list_title'          => $request['list_title'][$i],
+                    'list_subtitle'       => $this->model->changeTokey($request['list_title'][$i]),
                     'list_description'    => $request['list_description'][$i],
                     'status'              => $request['status'],
                     'created_by'          => $request['created_by'],
@@ -125,7 +126,7 @@ class PageSectionElementsService {
                 $subheading  =  array_key_exists($i, $request->input('subtitle')) ? $request->input('subtitle')[$i] : null;
 
                 if ($request->file('image_input') && array_key_exists($i,$request->file('image_input'))){
-                    $image_name  = $this->updateImage( $request->file('image_input')[$i],'776','464');
+                    $image_name  = $this->updateImage( $request->file('image_input')[$i],'700','400');
                     $request->request->add(['image_'.$i => $image_name]);
                     if ($section && $section->image){
                         $this->deleteImage($section->image);
@@ -140,6 +141,7 @@ class PageSectionElementsService {
                     'subtitle'            => $subheading,
                     'image'               => $request['image_'.$i] ?? $section->image,
                     'list_title'          => $request['list_title'][$i],
+                    'list_subtitle'       => $this->model->changeTokey($request['list_title'][$i]),
                     'list_description'    => $request['list_description'][$i],
                     'status'              => $request['status'],
                     'created_by'          => $request['created_by'],

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 class BackendBaseModel extends Authenticatable
@@ -30,6 +31,11 @@ class BackendBaseModel extends Authenticatable
     public function scopeDescending(Builder $query): void
     {
         $query->orderBy('created_at', 'DESC');
+    }
+
+    public function changeTokey($title)
+    {
+        return Str::slug($title);
     }
 
 }
