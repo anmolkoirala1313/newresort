@@ -68,9 +68,9 @@
                                         @if($value == 'faq')
                                             @include($view_path.'includes.faq')
                                         @endif
-                                        @if($value == 'map_and_description')
-                                            @include($view_path.'includes.map_and_description')
-                                        @endif
+{{--                                        @if($value == 'map_and_description')--}}
+{{--                                            @include($view_path.'includes.map_and_description')--}}
+{{--                                        @endif--}}
                                         @if($value == 'header_description')
                                             @include($view_path.'includes.header_description')
                                         @endif
@@ -83,9 +83,9 @@
                                         @if($value == 'gallery')
                                             @include($view_path.'includes.gallery')
                                         @endif
-                                            @if($value == 'timeline')
-                                            @include($view_path.'includes.timeline')
-                                        @endif
+{{--                                            @if($value == 'timeline')--}}
+{{--                                            @include($view_path.'includes.timeline')--}}
+{{--                                        @endif--}}
                                     </div>
                                 @endforeach
                             </div>

@@ -1,25 +1,22 @@
-<section class="project-area-two project-bg-two" data-background="{{ asset('assets/frontend/img/bg/project_bg02.jpg') }}" style="    padding: 90px 100px;">
-    <div class="container custom-container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section-title section-title-three text-center mb-20 tg-heading-subheading animation-style1">
-                    <span class="sub-title tg-element-title">{{ $element->list_number_2 ?? '' }}</span>
-                    <h2 class="title tg-element-title">{{ $element->list_number_1 ?? '' }}</h2>
-                </div>
-            </div>
-        </div>
+<section class="section-padding">
+    <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <div class="section-subtitle">{{ $element->list_number_2 ?? '' }}</div>
+                <div class="section-title">{{ $element->list_number_1 ?? '' }}</div>
+            </div>
+
+            <!-- 3 columns -->
             @foreach($element->pageSectionGalleries as $index=>$gallery)
-                <div class="col-lg-4 col-md-6 col-sm-10 mt-3">
-                    <div class="project-thumb-two">
-                        <div class="magnific-img">
-                            <a class="image-popup-vertical-fit"
-                               href="{{ asset(galleryImagePath('section_element').$gallery->resized_name) }}" title="">
+                <div class="col-md-4 gallery-item">
+                    <a href="{{ asset(galleryImagePath('section_element').$gallery->resized_name) }}" title="" class="img-zoom">
+                        <div class="gallery-box">
+                            <div class="gallery-img">
                                 <img src="{{ asset(galleryImagePath('section_element').$gallery->resized_name) }}"
-                                     class="{{ @$page_detail->slug=='legal-document' || @$page_detail->slug=='legal-documents' || @$page_detail->slug=='sample-documents' || @$page_detail->slug=='sample-document' ? '':'image-dimension' }}" alt="" />
-                            </a>
+                                     class="mx-auto d-block {{ @$page_detail->slug=='legal-document' || @$page_detail->slug=='legal-documents' || @$page_detail->slug=='sample-documents' || @$page_detail->slug=='sample-document' ? '':'image-dimension' }}" alt="work-img">
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>

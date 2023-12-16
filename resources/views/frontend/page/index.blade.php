@@ -10,8 +10,8 @@
         transition: .3s linear;
     }
     .mfp-container {
-        max-width: 900px;
-        max-height: 900px;
+        max-width: 1000px;
+        max-height: 1000px;
         margin: 0 auto;
         top: 50% !important;
         left: 50% !important;
