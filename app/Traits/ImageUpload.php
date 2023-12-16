@@ -66,4 +66,12 @@ trait ImageUpload {
             @unlink($this->image_path.$thumb_name);
         }
     }
+
+    protected function deleteGalleryImage($image,$folder_name)
+    {
+        $image_path = $folder_name.DIRECTORY_SEPARATOR.$image;
+        if (!empty($image) && file_exists($this->image_path.$image_path)){
+            @unlink($this->image_path.DIRECTORY_SEPARATOR.$image_path);
+        }
+    }
 }

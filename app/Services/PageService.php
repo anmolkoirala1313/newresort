@@ -6,6 +6,7 @@ use App\Models\Backend\Page\Page;
 use App\Models\Backend\Page\PageSection;
 use App\Traits\ImageUpload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 
@@ -15,6 +16,9 @@ class PageService {
     protected string $module        = 'backend.';
     protected string $base_route    = 'backend.page.';
     protected string $view_path     = 'backend.page.';
+    protected string $page          = 'Page';
+    protected string $folder_name   = 'page';
+    protected string $page_title, $page_method, $image_path, $file_path;
 
     private DataTables $dataTables;
     private Page $model;
@@ -22,7 +26,8 @@ class PageService {
     public function __construct(DataTables $dataTables)
     {
         $this->model        = new Page();
-        $this->dataTables = $dataTables;
+        $this->dataTables   = $dataTables;
+        $this->image_path   = public_path(DIRECTORY_SEPARATOR.'storage'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR);
     }
 
     public function getDataForDatatable(Request $request){
@@ -163,6 +168,60 @@ class PageService {
                 'created_by' => $request['created_by'],
             ]);
         }
+    }
+
+    public function removePageRelatedSections($data){
+        // Get the image paths related to PageSectionElements
+        $imagePaths = DB::table('page_section_elements')
+            ->select('image')
+            ->whereIn('page_section_id', function ($query) use ($data) {
+                $query->select('id')
+                    ->from('page_sections')
+                    ->where('page_id', $data['row']->id);
+            })
+            ->get()
+            ->pluck('image')
+            ->toArray();
+
+        // Delete the actual images from storage
+        foreach ($imagePaths as $imagePath) {
+            if ($imagePath) {
+                $this->deleteImage($imagePath);
+            }
+        }
+
+        // Delete related PageSectionElements using a query
+        DB::table('page_section_elements')
+            ->whereIn('page_section_id', function ($query) use ($data) {
+                $query->select('id')
+                    ->from('page_sections')
+                    ->where('page_id', $data['row']->id);
+            })->delete();
+
+        $gallery_imagePaths = DB::table('page_section_galleries')
+            ->select('resized_name','filename')
+            ->whereIn('page_section_id', function ($query) use ($data) {
+                $query->select('id')
+                    ->from('page_sections')
+                    ->where('page_id', $data['row']->id);
+            })
+            ->get()
+            ->pluck('resized_name','filename')
+            ->toArray();
+
+        foreach ($gallery_imagePaths as $index=>$image) {
+            if ($image) {
+                $this->deleteGalleryImage($index,'section_element/gallery');
+                $this->deleteGalleryImage($image,'section_element/gallery');
+            }
+        }
+
+        DB::table('page_section_galleries')
+            ->whereIn('page_section_id', function ($query) use ($data) {
+                $query->select('id')
+                    ->from('page_sections')
+                    ->where('page_id', $data['row']->id);
+            })->delete();
     }
 
 }

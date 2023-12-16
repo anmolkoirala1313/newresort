@@ -130,4 +130,71 @@ class PageController extends BackendBaseController
         return response()->json(route($this->base_route.'index'));
     }
 
+    public function destroy($id)
+    {
+        try {
+            DB::beginTransaction();
+                $data = $this->model->find($id);
+
+                $data->pageSections()->delete();
+
+                $this->model->find($id)->delete();
+            DB::commit();
+            Session::flash('success',$this->page.' was removed successfully');
+        } catch (\Exception $e) {
+            Session::flash('error',$this->page.' was not removed as data is already in use.');
+        }
+
+        return response()->json(route($this->base_route.'index'));
+    }
+
+    public function restore(Request $request, $id)
+    {
+
+        DB::beginTransaction();
+        try {
+            $page = $this->model->withTrashed()->find($id);
+            if ($page) {
+                $page->restore();
+                // Restoring related page sections
+                $page->pageSections()->restore();
+            }
+
+            Session::flash('success',$this->page.' restored successfully');
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Session::flash('error',$this->page.' restored failed. Something went wrong.');
+        }
+
+        return redirect()->route($this->base_route.'index');
+    }
+
+    public function removeTrash(Request $request, $id)
+    {
+        $data['row']       = $this->model->withTrashed()->find($id);
+        DB::beginTransaction();
+        try {
+
+            $this->deleteImage($data['row']->image);
+
+            $this->pageService->removePageRelatedSections($data);
+
+            // Permanently delete related PageSections (from the trash)
+            $data['row'] ->pageSections()->onlyTrashed()->forceDelete();
+
+            // Permanently delete the Page itself (from the trash)
+            $data['row'] ->forceDelete();
+
+            Session::flash('success',$this->page.' was removed successfully');
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            dd($e);
+            Session::flash('error',$this->page.' was not removed. Something went wrong.');
+        }
+
+        return redirect()->route($this->base_route.'trash');
+    }
+
 }

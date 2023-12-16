@@ -204,7 +204,7 @@ class PageSectionElementController extends BackendBaseController
 
 
 
-            $photo->move($this->image_path, $save_name);
+            $photo->move($this->image_path. '/section_element/gallery/', $save_name);
 
             $upload = new PageSectionGallery();
             $upload->page_section_id    = $page_section->id;
