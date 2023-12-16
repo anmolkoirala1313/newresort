@@ -5456,3 +5456,42 @@ select {
 .amenity-image{
     width: 45px;
 }
+
+.custom-description ul, .custom-description ol{
+    position: relative;
+    display: block;
+    padding-left: 0;
+    list-style: none;
+}
+
+.custom-description ul li, .custom-description ol li  {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.custom-description ul li:before,.custom-description ol li:before {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #aa8453;
+    font-family: 'themify';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+
+}
+
+.custom-description ul li:before{
+    padding-bottom: 10px;
+    padding-right: 10px;
+    content: "\e64c";
+}
+.custom-description ol li:before{
+    padding-right: 10px;
+    content: "\e60a";
+}

@@ -16,15 +16,24 @@
                 <div class="row">
                     <img class="img-responsive pb-4 border-bottom lazy" data-src="{{asset('assets/backend/images/pages/sections/'.$value.'.png')}}" width="100%"/>
 
-                    <div class="col-lg-12 mt-3">
+                    <div class="col-lg-6 mt-3">
                         <div class="mb-1">
                             <label class="form-label">Title </label>
-                            <input type="text" class="form-control" name="subtitle" value="{{$header_description->subtitle ?? null}}" maxlength="100" required>
+                            <input type="text" class="form-control" name="title" value="{{$header_description->title ?? null}}" maxlength="100" required>
                             <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
                             <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
                             <input type="hidden" class="form-control" value="{{ $data['row']->id }}" name="page_id" required>
                             <div class="invalid-feedback">
-                                Please enter the basic section title.
+                                Please enter the section title.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-3 mb-2">
+                        <div class="mb-1">
+                            <label>Sub Title </label>
+                            <input type="text" class="form-control" maxlength="60" name="subtitle" value="{{$header_description->subtitle ?? null}}">
+                            <div class="invalid-feedback">
+                                Please enter the section sub title.
                             </div>
                         </div>
                     </div>
