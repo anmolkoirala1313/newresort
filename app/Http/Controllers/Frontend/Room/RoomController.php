@@ -75,9 +75,9 @@ class RoomController extends BackendBaseController
     public function show($slug)
     {
         $this->page_method          = 'show';
-        $this->page_title           = $this->page.' Details';
         $data                       = $this->getCommonData();
         $data['row']                = $this->model->where('slug',$slug)->first();
+        $this->page_title           = $data['row']->title;
 
         if(!$data['row']){
             abort(404);

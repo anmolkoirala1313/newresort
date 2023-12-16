@@ -5,6 +5,7 @@
     <style>
         .image-dimension{
             height: 300px;
+            width: 240px;
             object-fit: cover;
             transform: scale(1);
             transition: .3s linear;

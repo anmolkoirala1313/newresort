@@ -18,6 +18,8 @@
                             <a href="{{ route('frontend.room.show', $data['row']->slug) }}" class="btn btn-outline-primary waves-effect waves-light"
                                target="_blank"
                                title="View in Frontend"> <i class="ri-eye-line align-bottom me-1"></i></a>
+                            <a class="btn btn-outline-primary waves-effect waves-light" href="{{ route($base_route.'gallery',$data['row']->slug) }}"
+                               title="Add Gallery Images"><i class="ri-image-2-fill"></i> Gallery </a>
                             <a class="btn btn-outline-success waves-effect waves-light" href="{{route($base_route.'index')}}">
                                 <i class="ri-menu-2-line align-bottom me-1"></i> {{ $page . ' List'}} </a>
                         </div>
