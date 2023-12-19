@@ -35,6 +35,11 @@
                 </div>
                 @endforeach
             </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    {{ $data['rows']->links('vendor.pagination.default') }}
+                </div>
+            </div>
         </div>
     </section>
 @endsection

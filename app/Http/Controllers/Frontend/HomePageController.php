@@ -105,7 +105,7 @@ class HomePageController extends BackendBaseController
         $this->page_title      = 'Our Album';
         $this->page            = 'Album';
         $data                  = $this->getCommonData();
-        $data['rows']          = Album::active()->descending()->withCount('albumGallery')->having('album_gallery_count', '>', 0)->paginate(2);
+        $data['rows']          = Album::active()->descending()->withCount('albumGallery')->having('album_gallery_count', '>', 0)->paginate(9);
 
         return view($this->loadResource($this->view_path.'page.album'), compact('data'));
     }

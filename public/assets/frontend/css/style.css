@@ -4517,6 +4517,12 @@ button.mfp-arrow {
     margin: 0;
     text-align: center;
 }
+.news-pagination-wrap .page-item.disabled{
+    display: none;
+}
+.page-item:first-child .page-link,.page-item:last-child .page-link {
+    border-radius: 100%;
+}
 .news-pagination-wrap li {
     display: inline-block;
     margin: 0 5px;

@@ -2,16 +2,15 @@
 
 @if ($paginator->hasPages())
 
-<ul class="pagination list-wrap">
-
+<ul class="news-pagination-wrap align-center mb-30 mt-30">
 
     @if ($paginator->onFirstPage())
         <li class="page-item disabled prev">
-            <a href="{{ $paginator->previousPageUrl() }}" class="page-link" aria-label="Prev"><i class="fas fa-angle-left"></i></a>
+            <a href="{{ $paginator->previousPageUrl() }}" class="page-link" aria-label="Prev"><i class="ti-angle-left"></i></a>
         </li>
     @else
     <li class="page-item prev">
-            <a href="{{ $paginator->previousPageUrl() }}" class="page-link" aria-label="Prev"><i class="fas fa-angle-left"></i></a>
+            <a href="{{ $paginator->previousPageUrl() }}" class="page-link" aria-label="Prev"><i class="ti-angle-left"></i></a>
         </li>
     @endif
 
@@ -30,10 +29,9 @@
             @if ($i == $paginator->currentPage())
 
                 <li class="page-item active count">
-                    <span class="page-link">
+                    <a class="page-link">
                     {{ $i }}
-                        <span class="sr-only">(current)</span>
-                    </span>
+                    </a>
                 </li>
             @else
                 <li class="page-item count"><a class="page-link" href="{{ $paginator->url($i) }}"> {{ $i }}</a></li>
@@ -54,7 +52,7 @@
     @if ($paginator->hasMorePages())
 
     <li class="page-item next">
-        <a class="page-link" href="{{ $paginator->nextPageUrl() }}" aria-label="Next"><i class="fas fa-angle-right"></i></a>
+        <a class="page-link" href="{{ $paginator->nextPageUrl() }}" aria-label="Next"><i class="ti-angle-right"></i></a>
     </li>
     @else
 
