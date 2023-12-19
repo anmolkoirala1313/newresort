@@ -60,7 +60,7 @@ class TeamController extends BackendBaseController
             $request->request->add(['created_by' => auth()->user()->id ]);
 
             if($request->hasFile('image_input')){
-                $image_name = $this->uploadImage($request->file('image_input'),'300','300');
+                $image_name = $this->uploadImage($request->file('image_input'),'600','600');
                 $request->request->add(['image'=>$image_name]);
             }
 
@@ -89,7 +89,7 @@ class TeamController extends BackendBaseController
         DB::beginTransaction();
         try {
             if($request->hasFile('image_input')){
-                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'300','300');
+                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'600','600');
                 $request->request->add(['image'=> $image_name]);
             }
 

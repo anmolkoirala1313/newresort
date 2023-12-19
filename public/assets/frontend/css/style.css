@@ -2590,7 +2590,7 @@ hr.border-2 {
 
 }
 .reservations .text a {
-    font-size: 27px;
+    font-size: 22px;
     color: #8e6d45;
     letter-spacing: -1px;
 }
@@ -4614,13 +4614,13 @@ button.mfp-arrow {
 
 /* ======= Contact style ======= */
 .contact h3 {
-    font-size: 24px;
+    font-size: 28px;
     color: #222;
 }
 .map {
-	-webkit-filter: grayscale(100%);
-	filter: grayscale(100%);
-	}
+	/*-webkit-filter: grayscale(100%);*/
+	/*filter: grayscale(100%);*/
+}
 
 
 /* ======= Buttons style ======= */
@@ -5520,4 +5520,8 @@ select {
 .room-img{
     height: 490px;
     object-fit: cover;
+}
+
+.my-svg-class{
+    margin-bottom: 3px;
 }

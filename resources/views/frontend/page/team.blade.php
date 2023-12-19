@@ -5,57 +5,47 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
+    @include($module.'includes.breadcrumb', ['breadcrumb_image'=>'2.jpg'])
 
-    <section class="team-area team-bg" data-background="{{ asset('assets/frontend/img/bg/team_bg.jpg') }}">
+    <section class="team section-padding bg-cream">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8">
-                    <div class="section-title text-center mb-50 tg-heading-subheading animation-style2">
-                        <span class="sub-title tg-element-title">Expert People</span>
-                        <h2 class="title tg-element-title">Dedicated Team Members</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                @if(count($data['rows']))
-                    @foreach($data['rows'] as $team)
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-9">
-                            <div class="team-item">
-                                <div class="team-thumb">
-                                    <img class="lazy" data-src="{{ asset(imagePath($team->image)) }}" alt="">
-                                    @if(@$team->fb_link || @$team->twitter_link || @$team->instagram_link || @$team->linkedin_link)
-                                        <div class="team-social">
-                                            <ul class="list-wrap">
-                                                @if($team->fb_link)
-                                                    <li> <a href="{{ $team->fb_link  ?? "#" }}"><span class="fab fa-facebook"></span></a></li>
-                                                @endif
-                                                @if($team->instagram_link)
-                                                    <li><a href="{{ $team->instagram_link  ?? "#" }}"><span class="fab fa-instagram"></span></a></li>
-                                                @endif
-                                                @if($team->twitter_link)
-                                                    <li> <a href="{{ $team->twitter_link  ?? "#" }}"><span class="fab fa-twitter"></span></a></li>
-                                                @endif
-                                                @if($team->linkedin_link)
-                                                    <li><a href="{{ $team->linkedin_link  ?? "#" }}"><span class="fab fa-linkedin"></span></a></li>
-                                                @endif
-                                            </ul>
+            <div class="row">
+                @foreach($data['rows'] as $team)
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div class="img">
+                                <img class="lazy" data-src="{{ asset(imagePath($team->image)) }}" alt="">
+                            </div>
+                            <div class="info">
+                                <h6>{{$team->title ?? ''}}</h6>
+                                <p>{{$team->designation ?? ''}}</p>
+                                @if(@$team->fb_link || @$team->twitter_link || @$team->instagram_link || @$team->linkedin_link)
+                                    <div class="social valign">
+                                        <div class="full-width">
+                                            @if($team->fb_link)
+                                                <a href="{{ $team->fb_link ?? "#" }}"><i class="ti-facebook"></i></a>
+                                            @endif
+                                            @if($team->instagram_link)
+                                                <a href="{{ $team->instagram_link ?? "#" }}"><i class="ti-instagram"></i></a>
+                                            @endif
+                                            @if($team->twitter_link)
+                                               <a href="{{ $team->twitter_link ?? "#" }}">
+                                                   <svg class="my-svg-class" xmlns="http://www.w3.org/2000/svg" height="15" width="15" viewBox="0 0 512 512">
+                                                       <path fill="#aa8453" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+                                                   </svg>
+                                               </a>
+                                            @endif
+                                            @if($team->linkedin_link)
+                                                <a href="{{ $team->linkedin_link ?? "#" }}"><i class="ti-linkedin"></i></a>
+                                            @endif
+                                            <p>{{$team->title ?? ''}}</p>
                                         </div>
-                                    @endif
-                                </div>
-                                <div class="team-content">
-                                    <h2 class="title"><a>{{$team->title ?? ''}}</a></h2>
-                                    <span>{{$team->designation ?? ''}}</span>
-                                </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
-                    @endforeach
-                @endif
-                <div class="pagination-wrap mt-30">
-                    <nav aria-label="Page navigation example">
-                        {{ $data['rows']->links('vendor.pagination.default') }}
-                    </nav>
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
