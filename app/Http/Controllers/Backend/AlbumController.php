@@ -46,7 +46,7 @@ class AlbumController extends BackendBaseController
             $request->request->add(['created_by' => auth()->user()->id ]);
 
             if($request->hasFile('image_input')){
-                $image_name = $this->uploadImage($request->file('image_input'),'412','450');
+                $image_name = $this->uploadImage($request->file('image_input'),'356','475');
                 $request->request->add(['image'=>$image_name]);
             }
 
@@ -75,7 +75,7 @@ class AlbumController extends BackendBaseController
         DB::beginTransaction();
         try {
             if($request->hasFile('image_input')){
-                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'412','450');
+                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'356','475');
                 $request->request->add(['image'=>$image_name]);
             }
             $request->request->add(['slug' => $this->model->changeTokey($request['title'])]);
@@ -160,7 +160,7 @@ class AlbumController extends BackendBaseController
 
 
 
-            $photo->move($this->image_path, $save_name);
+            $photo->move($this->image_path. '/'.$this->folder_name.'/gallery/', $save_name);
 
             $upload                 = new AlbumGallery();
             $upload->album_id       = $row->id;

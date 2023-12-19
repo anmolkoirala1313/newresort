@@ -5,30 +5,35 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
+    @include($module.'includes.breadcrumb', ['breadcrumb_image'=>'4.jpg'])
 
-    <section class="project-area-two project-bg-two" data-background="{{ asset('assets/frontend/img/bg/project_bg02.jpg') }}">
-        <div class="container custom-container">
+    <section class="rooms1 section-padding bg-cream" data-scroll-index="1">
+        <div class="container">
             <div class="row">
                 @foreach($data['rows'] as $row)
-                    <div class="col-lg-4 col-md-6 col-sm-10">
-                        <div class="project-item-two">
-                            <div class="project-thumb-two">
-                                <img class="lazy" data-src="{{ asset(imagePath($row->image)) }}" alt="">
-                            </div>
-                            <div class="project-content-two">
-                                <h2 class="title"><a href="{{ route('frontend.page.album_gallery',$row->slug) }}">{{ $row->title ?? '' }}</a></h2>
-                                <span>Images: ({{ $row->album_gallery_count }})</span>
-                                <a href="{{ route('frontend.page.album_gallery',$row->slug) }}" class="link-btn"><i class="fas fa-chevron-right"></i></a>
+                    <div class="col-md-4">
+                    <div class="item">
+                        <div class="position-re o-hidden">
+                            <img class="lazy" data-src="{{ asset(imagePath($row->image)) }}" alt="">
+                        </div>
+                        <span class="category"><a href="{{ route('frontend.page.album_gallery',$row->slug) }}">View</a></span>
+                        <div class="con">
+                            <h6><a href="{{ route('frontend.page.album_gallery',$row->slug) }}">Images : ({{ $row->album_gallery_count }})</a></h6>
+                            <h5><a href="{{ route('frontend.page.album_gallery',$row->slug) }}">{{ $row->title ?? '' }}</a> </h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-12 text-end">
+                                    <div class="permalink">
+                                        <a href="{{ route('frontend.page.album_gallery',$row->slug) }}">
+                                            Gallery <i class="ti-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
-                <div class="pagination-wrap mt-30">
-                    <nav aria-label="Page navigation example">
-                        {{ $data['rows']->links('vendor.pagination.default') }}
-                    </nav>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>

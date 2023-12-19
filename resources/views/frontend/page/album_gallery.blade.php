@@ -15,57 +15,28 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'breadcrumb_bg.jpg'])
+    @include($module.'includes.breadcrumb', ['breadcrumb_image'=>'7.jpg'])
 
-    <section class="project-area-two project-bg-two" data-background="{{ asset('assets/frontend/img/bg/project_bg02.jpg') }}">
-        <div class="container custom-container">
+    <section class="section-padding">
+        <div class="container">
             <div class="row">
+                <!-- 3 columns -->
                 @foreach($data['rows']->albumGallery as $index=>$gallery)
-                    <div class="col-lg-4 col-md-6 col-sm-10 mt-2">
-                        <div class="project-thumb-two">
-                            <div class="magnific-img">
-                                <a class="image-popup-vertical-fit"
-                                   href="{{ asset(galleryImagePath('album').$gallery->resized_name) }}" title="">
-                                    <img src="{{ asset(galleryImagePath('album').$gallery->resized_name) }}" class="image-dimension" alt="" />
-                                </a>
+                    <div class="col-md-4 gallery-item">
+                        <a href="{{ asset(galleryImagePath('album').$gallery->resized_name) }}" title="" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img">
+                                    <img src="{{ asset(galleryImagePath('album').$gallery->resized_name) }}"
+                                         class="mx-auto d-block image-dimension" alt="work-img">
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
-                    <div class="project-link">
-                        <a href="/">
-                            <img src="{{ asset('assets/frontend/img/icons/plus_icon.svg') }}" alt=""></a>
-                    </div>
-
             </div>
         </div>
     </section>
 
-
-{{--    <section class="portfolio-one">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                @foreach($data['rows']->albumGallery as $index=>$gallery)--}}
-
-{{--                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInDown" data-wow-delay="{{$index+1}}00ms">--}}
-{{--                        <div class="portfolio-one__single">--}}
-{{--                            <div class="portfolio-one__img-box">--}}
-{{--                                <div class="portfolio-one__img">--}}
-{{--                                    <img class="image-dimension" src="{{ asset(galleryImagePath('album').$gallery->resized_name) }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="portfolio-one__arrow">--}}
-{{--                                    <a href="{{ asset(galleryImagePath('album').$gallery->resized_name) }}" class="img-popup"><span--}}
-{{--                                            class="icon-top-right-1"></span></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-
-{{--            </div>--}}
-
-{{--        </div>--}}
-{{--    </section>--}}
 @endsection
 @section('js')
     <script src="{{asset('assets/common/lazyload.js')}}"></script>

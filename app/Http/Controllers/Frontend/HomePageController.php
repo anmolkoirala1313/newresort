@@ -113,10 +113,10 @@ class HomePageController extends BackendBaseController
     public function albumGallery($slug)
     {
         $this->page_method     = 'index';
-        $this->page_title      = 'Our Album';
-        $this->page            = 'Album';
+        $this->page_title      = "Album Gallery";
         $data                  = $this->getCommonData();
         $data['rows']          = Album::where('slug', $slug)->with('albumGallery')->first();
+        $this->page            = $data['rows']->title."'s Gallery";
 
         return view($this->loadResource($this->view_path.'page.album_gallery'), compact('data'));
     }

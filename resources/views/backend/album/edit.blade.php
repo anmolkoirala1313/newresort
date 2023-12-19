@@ -14,7 +14,13 @@
                     <h4 class="card-title mb-0 flex-grow-1">{{ $page_title }}</h4>
                     <div class="flex-shrink-0">
 
-                        <div class="d-flex justify-content-sm-end">
+                        <div class="d-flex justify-content-sm-end gap-2">
+                            <a href="{{ route('frontend.page.album') }}" class="btn btn-outline-info waves-effect waves-light"
+                               target="_blank" title="View in Frontend">
+                                <i class="ri-eye-line align-bottom me-1"></i>
+                            </a>
+                            <a class="btn btn-outline-primary waves-effect waves-light" href="{{ route($base_route.'gallery',$data['row']->id) }}"
+                               title="Add Gallery Images"><i class="ri-image-2-fill"></i> Gallery </a>
                             <a class="btn btn-outline-success waves-effect waves-light" href="{{route($base_route.'index')}}">
                                 <i class="ri-menu-2-line align-bottom me-1"></i> {{ $page . ' List'}} </a>
                         </div>
