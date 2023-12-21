@@ -5,44 +5,48 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'breadcrumb_bg.jpg'])
+    @include($module.'includes.breadcrumb', ['breadcrumb_image'=>'5.jpg'])
 
 
-    <section class="team-area team-bg" data-background="{{ asset('assets/frontend/img/bg/team_bg.jpg') }}">
-        <div class="container">
-            <div class="row justify-content-center">
-                @if(count($data['rows'] ))
-                    @foreach($data['rows'] as $testimonial)
-                        <div class="col-lg-6">
-                            <div class="testimonial-item-two">
-                                <div class="testimonial-content-two">
-                                    <p>
-                                        {{ $testimonial->description }}
-                                    </p>
-                                    <div class="testimonial-avatar">
-                                        <div class="avatar-thumb">
-                                            <img src="{{ asset(imagePath($testimonial->image))}}" alt="">
-                                        </div>
-                                        <div class="avatar-info">
-                                            <h2 class="title">{{ $testimonial->title ?? '' }}</h2>
-                                            <span>{{ $testimonial->position ?? '' }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-                <div class="pagination-wrap mt-30">
-                    <nav aria-label="Page navigation example">
-                        {{ $data['rows']->links('vendor.pagination.default') }}
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-{{--    --}}
-{{--    <section class="testimonials-page">--}}
+{{--    <section class="team-area team-bg" data-background="{{ asset('assets/frontend/img/bg/team_bg.jpg') }}">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row justify-content-center">--}}
+{{--                @if(count($data['rows'] ))--}}
+{{--                    @foreach($data['rows'] as $testimonial)--}}
+{{--                        <div class="col-lg-6">--}}
+{{--                            <div class="testimonial-item-two">--}}
+{{--                                <div class="testimonial-content-two">--}}
+{{--                                    <p>--}}
+{{--                                        {{ $testimonial->description }}--}}
+{{--                                    </p>--}}
+{{--                                    <div class="testimonial-avatar">--}}
+{{--                                        <div class="avatar-thumb">--}}
+{{--                                            <img src="{{ asset(imagePath($testimonial->image))}}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="avatar-info">--}}
+{{--                                            <h2 class="title">{{ $testimonial->title ?? '' }}</h2>--}}
+{{--                                            <span>{{ $testimonial->position ?? '' }}</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                @endif--}}
+{{--                <div class="pagination-wrap mt-30">--}}
+{{--                    <nav aria-label="Page navigation example">--}}
+{{--                        {{ $data['rows']->links('vendor.pagination.default') }}--}}
+{{--                    </nav>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+
+
+
+
+
+    {{--    <section class="testimonials-page">--}}
 {{--        <div class="container">--}}
 {{--            <div class="row">--}}
 {{--                @if(count($data['rows'] ))--}}

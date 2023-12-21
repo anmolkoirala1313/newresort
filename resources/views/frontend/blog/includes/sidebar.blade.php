@@ -1,41 +1,49 @@
-<aside class="blog-sidebar">
-    <div class="sidebar-search">
-        {!! Form::open(['route' => $base_route.'search', 'method'=>'GET']) !!}
-            <input type="text" placeholder="Search Blogs . . ." name="for">
-            <button type="submit"><i class="flaticon-search"></i></button>
-        {!! Form::close() !!}
+<div class="news2-sidebar row">
+    <div class="col-md-12">
+        <div class="widget search">
+            {!! Form::open(['route' => $base_route.'search', 'method'=>'GET']) !!}
+                <input type="text" placeholder="Search blogs..." name="for" />
+                <button type="submit"><i class="ti-search" aria-hidden="true"></i></button>
+            {!! Form::close() !!}
+        </div>
     </div>
-    @if(count( $data['categories']) > 0)
-        <div class="blog-widget">
-            <h4 class="bw-title">Categories</h4>
-            <div class="bs-cat-list">
-                <ul class="list-wrap">
-                    @foreach($data['categories'] as $category)
-                        <li><a href="{{ route($base_route.'category',$category->slug) }}">  {{$category->title}} <span>({{$category->blogs_count}})</span></a></li>
+    @if(count( $data['latest']) > 0)
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="widget-title">
+                    <h6>Latest Posts</h6>
+                </div>
+                <ul class="recent">
+                    @foreach($data['latest'] as $latest)
+                        <li>
+                            <div class="thum">
+                                <img class="lazy" data-src="{{ asset(imagePath($latest->image)) }}" alt="">
+                            </div>
+                            <a href="{{ route($module.'blog.show',$latest->slug) }}">
+                                {{ $latest->title }}
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
         </div>
     @endif
-    @if(count( $data['latest']) > 0)
-        <div class="blog-widget">
-            <h4 class="bw-title">Recent Posts</h4>
-            <div class="rc-post-wrap">
-                @foreach($data['latest'] as $latest)
-                    <div class="rc-post-item">
-                        <div class="thumb">
-                            <a href="{{ route($module.'blog.show',$latest->slug) }}">
-                                <img class="lazy" data-src="{{ asset(imagePath($latest->image)) }}" alt="">
-                            </a>
-                        </div>
-                        <div class="content">
-                            <span class="date"><i class="far fa-calendar"></i> {{date('d M Y', strtotime($latest->created_at))}}</span>
-                            <h2 class="title"><a href="{{ route($module.'blog.show',$latest->slug) }}">   {{ $latest->title }}</a></h2>
-                        </div>
-                    </div>
-                @endforeach
+    @if(count( $data['categories']) > 0)
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="widget-title">
+                    <h6>Categories</h6>
+                </div>
+                <ul>
+                    @foreach($data['categories'] as $category)
+                        <li><a href="{{ route($base_route.'category',$category->slug) }}">
+                                <i class="ti-angle-right"></i>
+                                {{$category->title}} ({{$category->blogs_count}})</a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     @endif
-</aside>
 
+</div>

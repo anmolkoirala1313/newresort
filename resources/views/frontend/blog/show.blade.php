@@ -3,66 +3,48 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'breadcrumb_bg.jpg'])
+    @include($module.'includes.breadcrumb',['breadcrumb_image'=> '1.jpg'])
 
-    <section class="blog-details-area pt-120 pb-60">
+
+    <section class="news2 section-padding">
         <div class="container">
-            <div class="blog-details-wrap">
-                <div class="row justify-content-center">
-                    <div class="col-71">
-                        <div class="blog-details-thumb">
-                            <img class="lazy" data-src="{{ asset(imagePath($data['row']->image)) }}" alt="">
-                        </div>
-                        <div class="blog-details-content">
-                            <h2 class="title">   {{ $data['row']->title ?? '' }}</h2>
-                            <div class="blog-meta-three">
-                                <ul class="list-wrap">
-                                    <li><i class="far fa-calendar"></i>22 Jan, 2023</li>
-                                    <li><i class="fas fa-tags"></i>
-                                        <a href="{{ route('frontend.blog.category', $data['row']->blogCategory->slug)}}">  {{ $data['row']->blogCategory->title ?? ''}}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="text-align-justify custom-description">{!!  $data['row']->description !!}</div>
-                            <div class="bd-content-bottom">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7">
-                                        <div class="post-tags">
-                                            <h5 class="title">Category:</h5>
-                                            <ul class="list-wrap">
-                                                <li><a href="{{ route('frontend.blog.category', $data['row']->blogCategory->slug)}}">
-                                                        {{ $data['row']->blogCategory->title ?? ''}}</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="blog-post-share">
-                                            <h5 class="title">Share:</h5>
-                                            <ul class="list-wrap">
-                                                <li>
-                                                    <a href="#"><i class="fab fa-facebook" onclick='fbShare("{{route('frontend.blog.show',$data['row']->slug)}}")'></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter" onclick='twitShare("{{route('frontend.blog.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('frontend.blog.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="post-img mb-3">
+                        <img class="lazy" data-src="{{ asset(imagePath($data['row']->image)) }}" alt="">
+                        <div class="date">
+                            <a> <span>{{date('M Y', strtotime($data['row']->created_at))}}</span> <i>{{date('d', strtotime($data['row']->created_at))}}</i> </a>
                         </div>
                     </div>
-                    <div class="col-29">
-                        @include($view_path.'includes.sidebar')
+                    <a href="{{ route('frontend.blog.category', $data['row']->blogCategory->slug)}}">
+                        <span class="tag">{{ $data['row']->blogCategory->title ?? ''}}</span></a>
+                    <h2>{{ $data['row']->title ?? '' }}</h2>
+                    <div class="text-align-justify custom-description">
+                        {!!  $data['row']->description !!}
                     </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="col-md-4 sticky-sidebar">
+                    @include($view_path.'includes.sidebar')
                 </div>
             </div>
         </div>
     </section>
+
+{{--    <ul class="list-wrap">--}}
+{{--        <li>--}}
+{{--            <a href="#"><i class="fab fa-facebook" onclick='fbShare("{{route('frontend.blog.show',$data['row']->slug)}}")'></i></a>--}}
+{{--        </li>--}}
+{{--        <li>--}}
+{{--            <a href="#"><i class="fab fa-twitter" onclick='twitShare("{{route('frontend.blog.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>--}}
+{{--        </li>--}}
+
+{{--        <li>--}}
+{{--            <a href="#"><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('frontend.blog.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>--}}
+{{--        </li>--}}
+{{--    </ul>--}}
+
+
 @endsection
 
 @section('js')
