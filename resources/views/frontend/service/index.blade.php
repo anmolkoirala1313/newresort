@@ -3,41 +3,66 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=>'image-2.png'])
+    @include($module.'includes.breadcrumb', ['breadcrumb_image'=>'2.jpg'])
 
-    <section class="services-details-area pt-120 pb-120">
+    <section class="services section-padding">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-71 order-0 order-lg-2">
+            <div class="row">
+{{--                <div class="col-md-4 sticky-sidebar">--}}
+{{--                    @include($view_path.'includes.sidebar')--}}
+{{--                </div>--}}
+                <div class="col-md-12">
                     <div class="row">
                         @foreach( $data['rows']  as $index=>$row)
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8">
-                                <div class="services-item-two">
-                                    <div class="services-thumb-two">
-                                        <img class="lazy" data-src="{{ asset(thumbnailImagePath($row->image)) }}" alt="">
-                                        <div class="item-shape">
-                                            <img class="lazy" data-src="{{ asset('assets/frontend/img/services/services_item_shape.png') }}" alt="">
+                            @if($loop->odd)
+                                <div class="row">
+                                    <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                                        <div class="img left">
+                                            <a href="{{ route('frontend.service.show', $row->key) }}">
+                                                <img class="lazy" data-src="{{ asset(thumbnailImagePath($row->image)) }}" alt=""></a>
                                         </div>
                                     </div>
-                                    <div class="services-content-two">
-                                        <div class="icon">
-                                            <i class="flaticon-layers"></i>
+                                    <div class="col-md-6 p-0 bg-cream valign animate-box" data-animate-effect="fadeInRight">
+                                        <div class="content">
+                                            <div class="cont text-left">
+                                                <div class="info">
+                                                    <h6>{{ $row->subtitle ?? '' }}</h6>
+                                                </div>
+                                                <h4>{{ $row->title ?? '' }}</h4>
+                                                <p>{{ elipsis($row->description ?? '') }}</p>
+                                                <div class="butn-dark"> <a href="{{ route('frontend.service.show', $row->key) }}"><span>Learn More</span></a> </div>
+                                            </div>
                                         </div>
-                                        <h2 class="title"><a href="{{ route('frontend.service.show', $row->key) }}">{{ $row->title ?? '' }}</a></h2>
                                     </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="row">
+                                    <div class="col-md-6 p-0 animate-box bg-cream order2 valign " data-animate-effect="fadeInLeft">
+                                        <div class="content">
+                                            <div class="cont text-left">
+                                                <div class="info">
+                                                    <h6>{{ $row->subtitle ?? '' }}</h6>
+                                                </div>
+                                                <h4>{{ $row->title ?? '' }}</h4>
+                                                <p>{{ elipsis($row->description ?? '') }}</p>
+                                                <div class="butn-dark"> <a href="{{ route('frontend.service.show', $row->key) }}"><span>Learn More</span></a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
+                                        <div class="img">
+                                            <a href="{{ route('frontend.service.show', $row->key) }}"><img class="lazy" data-src="{{ asset(thumbnailImagePath($row->image)) }}" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         @endforeach
                     </div>
-                    <div class="pagination-wrap mt-30">
-                        <nav aria-label="Page navigation example">
-                            {{ $data['rows']->links('vendor.pagination.default') }}
-                        </nav>
+                    <div class="row">
+                        {{ $data['rows']->links('vendor.pagination.default') }}
                     </div>
                 </div>
-                <div class="col-29">
-                    @include($view_path.'includes.sidebar')
-                </div>
+
             </div>
         </div>
     </section>

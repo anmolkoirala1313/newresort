@@ -36,8 +36,6 @@
                     @include($view_path.'includes.sidebar')
                 </div>
             </div>
-
-
         </div>
     </section>
 @endsection

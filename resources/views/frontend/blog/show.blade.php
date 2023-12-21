@@ -3,7 +3,7 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> '1.jpg'])
+    @include($module.'includes.breadcrumb',['breadcrumb_image'=> '3.jpg'])
 
 
     <section class="news2 section-padding">
@@ -22,10 +22,6 @@
                     <div class="text-align-justify custom-description">
                         {!!  $data['row']->description !!}
                     </div>
-                </div>
-                <!-- Sidebar -->
-                <div class="col-md-4 sticky-sidebar">
-                    @include($view_path.'includes.sidebar')
                 </div>
             </div>
         </div>
