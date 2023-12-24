@@ -3,23 +3,21 @@
 
 @section('content')
 
-    @include($view_path.'slider_list.includes.breadcrumb',['breadcrumb_image'=>'image-3.jpeg'])
+    @include($view_path.'slider_list.includes.breadcrumb',['breadcrumb_image'=>'3.jpg'])
 
-    <section class="services-details">
+    <section class="services section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-xl-3 col-lg-4">
+                <div class="col-md-4 sticky-sidebar">
                     @include($view_path.'slider_list.includes.sidebar')
                 </div>
-                <div class="col-xl-9 col-lg-8">
-                    <div class="services-details__right">
-                        <div class="services-details__img">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="post-img mb-3">
                             <img class="lazy" data-src="{{ asset(imagePath($data['row']->image)) }}" alt="">
                         </div>
-                        <h3 class="services-details__title-1">
-                            {{ $data['row']->list_title ?? '' }}
-                        </h3>
-                        <div class="services-details__text-1 text-align-justify custom-description">
+                        <h2> {{ $data['row']->list_title ?? '' }}</h2>
+                        <div class="text-align-justify custom-description">
                             {!!  $data['row']->list_description !!}
                         </div>
                     </div>
@@ -27,6 +25,7 @@
             </div>
         </div>
     </section>
+
 @endsection
 
 @section('js')

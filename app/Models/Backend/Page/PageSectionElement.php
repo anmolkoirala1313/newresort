@@ -15,6 +15,6 @@ class PageSectionElement extends BackendBaseModel
 
     public function section()
     {
-        return $this->belongsTo(PageSection::class)->with('page');
+        return $this->belongsTo(PageSection::class,'page_section_id')->with('page');
     }
 }
